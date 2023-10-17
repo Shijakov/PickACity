@@ -6,6 +6,8 @@ import { getAbstractForNameDbpedia, getLandmarksGeonames, getRandomCityGeonames 
 import LandmarkInfoModal from '../components/LandmarkInfoModal';
 import FiltersModal from '../components/FiltersModal';
 import { StatusBar } from 'expo-status-bar';
+import { showMessage } from 'react-native-flash-message';
+import FlashMessage from 'react-native-flash-message';
 
 const contPoints = {
   'AF': {latitude: 7.1881, longitude: 21.09375},
@@ -56,6 +58,10 @@ export default function HomePage() {
         const randomCityResult = await getRandomCityGeonames(selectedContinent);
 
         if (!randomCityResult.success) {
+          showMessage({
+            message: randomCityResult.message,
+            type: "danger",
+          });
           setIsLoading(false);
           setButtonText('Throw pin');
           return;
@@ -79,6 +85,10 @@ export default function HomePage() {
         const placesResult = await getLandmarksGeonames(city.name, selectedContinent);
 
         if (!placesResult.success) {
+          showMessage({
+            message: placesResult.message,
+            type: "danger",
+          });
           setIsLoading(false);
           setButtonText('Throw pin');
           return;
@@ -118,6 +128,7 @@ export default function HomePage() {
     <FloatingButton disabled={isLoading} onButonClicked={onButonClicked} title={buttonText} position={{top: 100}} />
     <Map ref={mapRef} landmarks={landmarks} showLandmarkInfo={onLandmarkPress} />
     <StatusBar backgroundColor={onFilters ? 'white' : undefined} />
+    <FlashMessage style={{alignItems: 'center', paddingTop: 30}} position="top" />
   </View>
 }
 
