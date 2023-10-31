@@ -4,14 +4,14 @@
     "slug": "PickACity",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/playstore-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#88bd5b"
     },
-    "assetBundlePatterns": [
+    "assetBundletterns": [
       "**/*"
     ],
     "ios": {
@@ -19,12 +19,23 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/load_icon.png",
+        "backgroundColor": "#88bd5b"
+      },
+      "package": "com.shijak.PickACity",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBHPOa2cOZwwXRttTGe3fXDqjF3-EmBdUg"
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c782d4c4-facf-4b13-b92c-84a4532885bd"
+      }
     }
   }
 }

@@ -1,7 +1,8 @@
 import { forwardRef } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { Marker } from 'react-native-maps';
+import { Marker, PROVIDER_GOOGLE  } from 'react-native-maps';
 import MapView from 'react-native-maps/lib/MapView';
+import RedCircle from './RedCircle';
 
 const Map = forwardRef(({landmarks, showLandmarkInfo}, ref) => {
 
@@ -13,12 +14,13 @@ const Map = forwardRef(({landmarks, showLandmarkInfo}, ref) => {
     >
       <View style={styles.centerText}>
         <Text>{landmark.name}</Text>
-        {landmark.isCity ? <Image source={require('../assets/city.png')} /> : <Image source={require('../assets/red-marker.webp')} />}
+        {landmark.isCity ? <Image source={require('../assets/city.png')} /> : <RedCircle />}
       </View>
     </Marker>)
 
     return <View style={styles.fullScreen}>
       <MapView 
+      provider={PROVIDER_GOOGLE}
       style={styles.fullScreen}
       initialRegion={{
         latitude: 48.69096, // This the position data
