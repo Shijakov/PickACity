@@ -73,6 +73,8 @@ export const getRandomCityGeonames = async (continent) => {
         orderby: 'population',
     }
 
+    return {success: false, message: 'Error while fetching result'};
+
     if (continent) {
         searchObject.continentCode = continent;
     }
